@@ -1,0 +1,38 @@
+{
+  "name": "aurelia-estates",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "concurrently -k \"vite --host 0.0.0.0\" \"node api/dev.js\"",
+    "build": "vite build",
+    "preview": "vite preview --host 0.0.0.0",
+    "start:api": "node api/dev.js",
+    "seed": "node scripts/seed.js",
+    "create-admin": "node scripts/create-admin.js",
+    "remove-demo": "node scripts/remove-demo.js",
+    "test": "node --test tests/*.test.js",
+    "diagnose:mongo": "node scripts/diagnose-mongo.js",
+    "verify-admin": "node scripts/verify-admin.js",
+    "check-admin": "node scripts/check-admin.js"
+  },
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "cloudinary": "^2.5.1",
+    "dotenv": "^17.0.0",
+    "cookie-parser": "^1.4.7",
+    "express": "^4.21.2",
+    "express-rate-limit": "^7.5.0",
+    "jsonwebtoken": "^9.0.2",
+    "mongoose": "^8.9.5",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
+    "react-router-dom": "^7.1.1",
+    "zod": "^3.24.1"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-react": "^4.3.4",
+    "concurrently": "^9.1.2",
+    "vite": "^6.0.5"
+  }
+}

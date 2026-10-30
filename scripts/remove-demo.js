@@ -1,0 +1,2 @@
+import '../api/lib/load-env.js';import mongoose from 'mongoose';import{connectDb}from'../api/lib/db.js';import Property from'../api/models/Property.js';
+if(process.env.CONFIRM_REMOVE_DEMO!=='yes')throw new Error('Set CONFIRM_REMOVE_DEMO=yes to intentionally remove only records marked isDemo=true');await connectDb();const result=await Property.deleteMany({isDemo:true});console.log(`Removed ${result.deletedCount} demonstration properties. Other listings were left unchanged.`);await mongoose.disconnect();

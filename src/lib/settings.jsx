@@ -1,0 +1,6 @@
+import React,{createContext,useContext,useEffect,useState} from 'react';
+import {api} from './api.js';
+const fallback={companyName:'Aurelia Estates',tagline:'Thoughtfully curated real estate.',email:'',phone:'',officeAddress:'',logoUrl:'',aboutIntro:'Every property search begins with a vision of how life could feel. Our approach brings thoughtful presentation and clear communication to each step of that journey.',aboutBody:'Our approach is centered on clear communication, considered property presentation, and a search shaped around each client’s priorities.',services:[{title:'Buying',description:'A considered search shaped around location, architecture, budget, and the way you want to live.'},{title:'Selling',description:'A thoughtful listing presentation and marketing plan tailored to your property.'},{title:'Property consultation',description:'A conversation about your goals, available opportunities, and the next practical step.'}],socialLinks:{}};
+const Context=createContext({settings:fallback,refresh:()=>{}});
+export function SettingsProvider({children}){const[settings,setSettings]=useState(fallback);const refresh=()=>api('/settings').then(d=>setSettings(d.item)).catch(()=>{});useEffect(()=>{refresh()},[]);return <Context.Provider value={{settings,refresh}}>{children}</Context.Provider>}
+export const useSettings=()=>useContext(Context);
